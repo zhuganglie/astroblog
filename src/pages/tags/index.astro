@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Tags';
+const description = 'All tags.';
+
+const allPosts = await Astro.glob('../../data/posts/*.{md,mdx}')
+const tags = [...new Set([].concat.apply([], allPosts.filter(p => p.frontmatter.draft != true).map(post => post.frontmatter.tags)))]
+---
+
+<BaseLayout title={title} description={description}>
+   
+    <h1>Tags</h1>
+    <hr />
+    <article class="mt-8">
+    <p class="flex flex-wrap justify-center items-center gap-x-4 px-6">
+        {tags.map((tag) => (
+           <a class="min-w-min" href={`/tags/${tag}`} title={`View posts tagged under "${tag}"`}>{tag}({allPosts.filter(p => p.frontmatter.tags.includes(tag) && p.frontmatter.draft !=true).length}) </a>
+       ))}
+       </p>
+    </article>
+</BaseLayout>
+
+
+

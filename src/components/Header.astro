@@ -1,0 +1,25 @@
+---
+import {Icon} from "astro-icon";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+const links = [
+    {name: "home", eng: "", href: "/", icon : "tabler:home"},
+    {name: "blog", eng: "blog", href: "/blog", icon: "tabler:writing"},
+    {name: "tags", eng: "tags", href: "/tags", icon: "tabler:tag"},
+    {name: "about", eng: "about", href:"/about", icon:"tabler:info-circle"},
+]
+---
+
+<header class="sticky top-0 bg-zinc-100 flex flex-col md:flex-row justify-around items-center p-2.5 md:p-8 gap-y-2" >
+  <span class="text-2xl text-yellow-100 py-0.5 px-2.5 font-extrabold border-2 bg-teal-900 rounded-full border-yellow-100">Z</span>
+  <nav class="flex gap-x-6 text-lg capitalize">
+    {links.map(
+      (link) =><a href={link.href} class={pathname.includes(link.href + "/") || currentPath === link.eng ? "underline font-bold" : ""}>{link.name}</a>
+  )}
+  
+  </nav>
+  
+  
+  
+</header>

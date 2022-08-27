@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+  
+  export async function getStaticPaths() {
+    const tags = new Set();
+    let posts = await Astro.glob('../../data/posts/*.{md,mdx}');
+    posts.forEach(p => p.frontmatter.tags.forEach((t: string) => tags.add(t)))
+    posts = posts.sort((a, b) => new Date(b.frontmatter.releaseDate).valueOf() - new Date(a.frontmatter.releaseDate).valueOf());
+    
+    return Array.from(tags).map(t => ({ params: { tag: t }, props: { posts: posts.filter(p => p.frontmatter.tags.includes(t) && p.frontmatter.draft !=true) } }));
+  }
+  const { tag } = Astro.params
+  const { posts } = Astro.props
+  
+  let title = `Posts by Tag: ${tag}`
+  let description = `Posts under the tag: "${tag}"`
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 class=" flex gap-x-2 text-2xl mt-2">Posts with: <span></span><Icon name="tabler:tag" class="w-6" /> {tag}</h1>
+  <hr />
+  <article class="mt-8 mx-6">
+  {posts.map((p:any) => {
+    const href=`/blog/${p.file.split('/').pop()?.split('.').shift()}`
+    return(
+  <li><a href={href}>{p.frontmatter.title} </a></li>)
+  })}
+  <p class="mt-6 bg-zinc-100 max-w-max  py-1 px-2.5"><a href="/tags">--> All tags</a></p>
+  </article>
+</BaseLayout>

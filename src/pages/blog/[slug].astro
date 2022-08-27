@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon"
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../data/posts/*.{md,mdx}');
+  return posts.map(p => ({
+    params: { slug: p.file.split('/').pop()?.split('.').shift() },
+    props: { post: p },
+  }));
+}
+
+const { Content, frontmatter } = Astro.props.post;
+const { title, description, date, tags } = frontmatter;
+---
+
+<BaseLayout title={title} description={description} >
+  <header>
+  
+    <h1>{title}</h1>
+    <div class="flex flex-col md:flex-row">
+    <p class="leading-4 flex items-center gap-x-2"><Icon name="tabler:calendar" class="w-5" /> <span>{date}</span></p>
+    <ul class="leading-4 flex list-none">
+      {tags.map((tag: []) => (
+        <li class="m-0"> <a class="bg-zinc-100 rounded-full m-0 px-2.5 py-0.5" href={`/tags/${tag}`}> {tag}</a></li>
+      ))}
+        </ul>
+        </div>
+    <hr class="mt-2"/>
+  </header>
+  <div class="mt-8">
+    <article class="content">
+      <Content />
+    </article>
+    <hr />
+    
+  </div>
+</BaseLayout>
+
