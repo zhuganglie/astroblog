@@ -1,12 +1,12 @@
 ---
-title: 'Learning Facilitation'
+title: 'Facilitating Learning'
 date: '2021-04-26'
 tags: ['学习', '培训']
 draft: false
 ---
 
 
-Here are some points I learnt from a class debate during ACTA training.  
+Here are some points I summarized from a class debate during ACTA training.  
 
   - Manage tension by balancing the needs of different learners (time vs. interaction)
   - Be committed to the learning of the learners when having fun activities
