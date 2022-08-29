@@ -166,7 +166,8 @@ draft: false
 6. 要求学员制作其它参考资料
    
 
-   <style>
+
+<style>
      table, td, th {
       border: 1px solid rgba(55, 65, 81, var(--tw-text-opacity));
     }

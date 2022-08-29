@@ -18,12 +18,12 @@ const posts = allSortedPosts.filter(post => post.frontmatter.draft != true)
     {posts.map((post, index) => {
       const href = `/blog/${post.file.split('/').pop()?.split('.').shift()}`;
       return (
-        <div class="mt-4">
+        <div class="bg-zinc-100/50 hover:bg-zinc-200/50 mt-4 border rounded shadow-md px-4">
           { index !== 0 && <hr /> }
           <div class="mt-4">
             <p>{<span class=" underline">{post.frontmatter.date}</span>}</p>
-            <h2>
-              <a href={href}>{post.frontmatter.title}</a>
+            <h2 class="text-center">
+              <a href={href} class="text-center">{post.frontmatter.title}</a>
             </h2>
             <ul class="flex list-none">
               {post.frontmatter.tags.map((tag: []) => (

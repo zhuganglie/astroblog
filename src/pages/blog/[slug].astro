@@ -1,5 +1,6 @@
 ---
-import { Icon } from "astro-icon"
+import { Icon } from "astro-icon";
+import Comments from "../../components/Comments.svelte";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -33,7 +34,7 @@ const { title, description, date, tags } = frontmatter;
       <Content />
     </article>
     <hr />
-    
+    <Comments client:load />
   </div>
 </BaseLayout>
 

@@ -4,4 +4,5 @@
 - [x] taxonomy page
 - [ ] pagination
 - [x] responsive navbar
-- [ ] add comment
+- [x] add comment
+- [x] tags page
