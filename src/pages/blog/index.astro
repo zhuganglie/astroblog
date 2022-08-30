@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from 'astro-icon';
 
 const title = 'Blog';
 const description = 'All posts.';
@@ -27,7 +28,7 @@ const posts = allSortedPosts.filter(post => post.frontmatter.draft != true)
             </h2>
             <ul class="flex list-none">
               {post.frontmatter.tags.map((tag: []) => (
-     <li><a class="bg-zinc-100 rounded-full px-2 py-0.5" href={`/tags/${tag}`}> {tag}</a></li>
+     <li class="flex items-center"><Icon name="tabler:tag" class="w-5" /><a class="bg-zinc-100 rounded-full px-2 py-0.5" href={`/tags/${tag}`}> {tag}</a></li>
   ))}
               </ul>
             
