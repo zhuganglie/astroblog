@@ -4,7 +4,7 @@ import Paginator from '../../components/Paginator.astro';
 
 const title = "Blog"
 const description = "All posts"
-export async function getStaticPaths({paginate }) {
+export async function getStaticPaths({ paginate }: any) {
   
   const allPosts = await Astro.glob('../../data/posts/*.md');
   const filteredPosts = allPosts.filter((post) => post.frontmatter.draft !=true);
