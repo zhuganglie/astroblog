@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Paginator from '../../components/Paginator.astro';
+import Icon from 'astro-icon';
 
 const title = "Blog"
 const description = "All posts"
@@ -14,8 +15,7 @@ export async function getStaticPaths({ paginate }: any) {
 
 }
 const { page } = Astro.props;
-
-console.log(page)
+//console.log(page)
 ---
 <BaseLayout title={title} description={description}>
     <h1>Posts</h1>
@@ -28,11 +28,11 @@ console.log(page)
 <h2 class="text-center">
               <a href={`/blog/${post.file.split('/').pop()?.split('.').shift()}`} class="text-center">{post.frontmatter.title}</a>
             </h2>
-<ul class="leading-4 flex list-none">
-      {post.frontmatter.tags.map((tag: []) => (
-        <li class="m-0"> <a class="bg-zinc-100 rounded-full m-0 px-2.5 py-0.5" href={`/tags/${tag}`}> {tag}</a></li>
-      ))}
-        </ul>
+            <ul class="flex list-none">
+              {post.frontmatter.tags.map((tag: []) => (
+     <li class="flex items-center"><Icon name="tabler:tag" class="w-5" /><a class="bg-zinc-100 rounded-full px-2 py-0.5" href={`/tags/${tag}`}> {tag}</a></li>
+  ))}
+              </ul>
     </div>
     </div>
 )}
