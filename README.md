@@ -2,7 +2,7 @@
 
 - [ ] search bar
 - [x] taxonomy page
-- [ ] pagination
+- [x] pagination
 - [x] responsive navbar
 - [x] add comment
 - [x] tags page

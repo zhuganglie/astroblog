@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Paginator from '../../components/Paginator.astro';
+
+const title = "Blog"
+const description = "All posts"
+export async function getStaticPaths({paginate }) {
+  
+  const allPosts = await Astro.glob('../../data/posts/*.md');
+  const filteredPosts = allPosts.filter((post) => post.frontmatter.draft !=true);
+    return paginate(filteredPosts, {
+      pageSize: 3
+    });
+
+}
+const { page } = Astro.props;
+
+console.log(page)
+---
+<BaseLayout title={title} description={description}>
+    <h1>Posts</h1>
+    <hr />
+    <div class="mt-8">
+{page.data.map((post: { file: string, frontmatter: { title: string; date: string; tags:[]}; }) => 
+<div class=" bg-zinc-100/50 hover:bg-zinc-200/50 mt-4 border rounded shadow-md px-4">
+    <div class="mt-4">
+    <p><span class=" underline">{post.frontmatter.date}</span></p>
+<h2 class="text-center">
+              <a href={`/blog/${post.file.split('/').pop()?.split('.').shift()}`} class="text-center">{post.frontmatter.title}</a>
+            </h2>
+<ul class="leading-4 flex list-none">
+      {post.frontmatter.tags.map((tag: []) => (
+        <li class="m-0"> <a class="bg-zinc-100 rounded-full m-0 px-2.5 py-0.5" href={`/tags/${tag}`}> {tag}</a></li>
+      ))}
+        </ul>
+    </div>
+    </div>
+)}
+</div>
+
+
+<Paginator page={page} />
+</BaseLayout>
