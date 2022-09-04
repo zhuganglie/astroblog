@@ -13,7 +13,7 @@ export default defineConfig({
       external: ["svgo"]
     }
   },
-  site: 'https://astroblog.netlify.app',
+  site: 'https://zhuganglie.netlify.app',
   integrations: [mdx(), svelte(), tailwind(), sitemap(), alpinejs()],
   markdown: {
     shikiConfig: {
