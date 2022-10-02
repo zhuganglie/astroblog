@@ -11,13 +11,13 @@
   },
   "devDependencies": {
     "@astrojs/alpinejs": "^0.1.2",
-    "@astrojs/mdx": "^0.11.1",
+    "@astrojs/mdx": "^0.11.3",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/svelte": "^1.0.0",
-    "@astrojs/tailwind": "^2.0.1",
+    "@astrojs/svelte": "^1.0.1",
+    "@astrojs/tailwind": "^2.0.2",
     "@types/alpinejs": "^3.7.0",
     "alpinejs": "^3.10.3",
-    "astro": "^1.2.7",
+    "astro": "^1.4.2",
     "rehype-external-links": "^2.0.1",
     "svelte": "^3.50.1"
   },
