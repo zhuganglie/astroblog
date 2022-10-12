@@ -16,7 +16,7 @@ const links = [
   <!--<span class="text-2xl text-yellow-100 py-0.5 px-2.5 font-extrabold border-2 bg-teal-900 rounded-full border-yellow-100">Z</span>-->
   <img src="/assets/avatar.jpeg" alt="avatar" width="48" class="rounded-full " />
   
-  <nav class="flex gap-x-6 text-lg capitalize">
+  <nav   class="flex gap-x-6 text-lg capitalize">
     {links.map(
       (link) =><a href={link.href} class={pathname.includes(link.href + "/") || currentPath === link.eng ? "underline font-bold" : ""}>{link.name}</a>
   )}
@@ -25,7 +25,7 @@ const links = [
   <!--<div class="md:hidden text-4xl grow-0" onclick={}>
     <Icon name="tabler:align-left" class="w-6" />
   </div>-->
- 
+  
   
 </header>
 
